@@ -12,14 +12,16 @@ const initialState: PrimaryColorContextType = {
   setPrimaryColor: () => null,
 };
 
-const PrimaryProviderContext =
+const PrimaryColorProviderContext =
   createContext<PrimaryColorContextType>(initialState);
 
-interface PrimaryProviderProps {
+interface PrimaryColorProviderProps {
   children: ReactNode;
 }
 
-export default function PrimaryProvider({children}: PrimaryProviderProps) {
+export default function PrimaryColorProvider({
+  children,
+}: PrimaryColorProviderProps) {
   const [primaryColor, setPrimaryColor] = useState<string>();
 
   useEffect(() => {
@@ -36,17 +38,19 @@ export default function PrimaryProvider({children}: PrimaryProviderProps) {
   };
 
   return (
-    <PrimaryProviderContext.Provider value={value as any}>
+    <PrimaryColorProviderContext.Provider value={value as any}>
       {children}
-    </PrimaryProviderContext.Provider>
+    </PrimaryColorProviderContext.Provider>
   );
 }
 
 export const usePrimaryColor = (): PrimaryColorContextType => {
-  const context = useContext(PrimaryProviderContext);
+  const context = useContext(PrimaryColorProviderContext);
 
   if (context === undefined)
-    throw new Error("usePrimaryColor must be used within a PrimaryProvider");
+    throw new Error(
+      "usePrimaryColor must be used within a PrimaryColorProvider"
+    );
 
   return context;
 };

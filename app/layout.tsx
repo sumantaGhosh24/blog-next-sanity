@@ -1,11 +1,11 @@
 import "./globals.css";
-import {ReactNode} from "react";
-import type {Metadata} from "next";
 import {Inter as FontSans} from "next/font/google";
+import type {Metadata} from "next";
+import {ReactNode} from "react";
 
-import {cn} from "@/lib/utils";
 import {ThemeProvider} from "@/components/theme-provider";
-import PrimaryProvider from "@/components/primary-provider";
+import PrimaryColorProvider from "@/components/primary-provider";
+import {cn} from "@/lib/utils";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,19 +17,15 @@ export const metadata: Metadata = {
     template: "%s | Blog Next",
     default: "Blog Next",
   },
-  description: "Blog website using nextjs and sanity",
+  description: "Blog using nextjs and sanity",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export default function RootLayout({children}: {children: ReactNode}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-white dark:bg-black font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
@@ -39,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PrimaryProvider>{children}</PrimaryProvider>
+          <PrimaryColorProvider>{children}</PrimaryColorProvider>
         </ThemeProvider>
       </body>
     </html>

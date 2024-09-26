@@ -1,15 +1,13 @@
-import {TagIcon} from "@sanity/icons";
 import {defineField, defineType} from "sanity";
 
-export const categoryType = defineType({
+export default defineType({
   name: "category",
   title: "Category",
   type: "document",
-  icon: TagIcon,
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
+      name: "name",
+      title: "Name",
       type: "string",
     }),
     defineField({
@@ -17,13 +15,17 @@ export const categoryType = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
+        source: "name",
+        maxLength: 200,
       },
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
     }),
   ],
 });

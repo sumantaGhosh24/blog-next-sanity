@@ -1,11 +1,9 @@
-import {UserIcon} from "@sanity/icons";
 import {defineField, defineType} from "sanity";
 
-export const authorType = defineType({
+export default defineType({
   name: "author",
   title: "Author",
   type: "document",
-  icon: UserIcon,
   fields: [
     defineField({
       name: "name",
@@ -18,44 +16,23 @@ export const authorType = defineType({
       type: "slug",
       options: {
         source: "name",
+        maxLength: 200,
       },
     }),
     defineField({
-      name: "designation",
-      title: "Designation",
+      name: "username",
+      title: "Username",
       type: "string",
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
+      name: "email",
+      title: "Email",
+      type: "string",
     }),
     defineField({
-      name: "profiles",
-      title: "Profiles",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "platform",
-              type: "string",
-              title: "Platform",
-            },
-            {
-              name: "url",
-              type: "url",
-              title: "URL",
-            },
-          ],
-        },
-      ],
-    }),
-    defineType({
-      name: "bio",
-      title: "Bio",
-      type: "text",
+      name: "address",
+      title: "Address",
+      type: "string",
     }),
     defineField({
       name: "image",
@@ -64,24 +41,17 @@ export const authorType = defineType({
       options: {
         hotspot: true,
       },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-        },
-      ],
     }),
     defineField({
-      name: "about",
-      title: "Full About",
-      type: "blockContent",
+      name: "website",
+      title: "Website",
+      type: "url",
+    }),
+    defineField({
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{type: "string"}],
     }),
   ],
-  preview: {
-    select: {
-      title: "name",
-      media: "image",
-    },
-  },
 });
