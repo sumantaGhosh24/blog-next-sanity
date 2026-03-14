@@ -22,7 +22,7 @@ const Header = () => {
             <Link href="/">
               <h2 className="text-2xl font-bold text-white dark:text-black">
                 <Image
-                  src="/next.svg"
+                  src="/logo.png"
                   width={30}
                   height={30}
                   alt="logo"

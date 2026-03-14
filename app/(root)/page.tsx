@@ -47,7 +47,7 @@ const HomePage = async ({searchParams}: Props) => {
           category={searchParams?.category || ""}
           author={searchParams?.author || ""}
         />
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {blogs?.length > 0 ? (
             blogs.map((blog: any) => (
               <BlogCard
@@ -62,7 +62,7 @@ const HomePage = async ({searchParams}: Props) => {
               />
             ))
           ) : (
-            <p>No blog found</p>
+            <p className="font-bold text-sm">No blog found</p>
           )}
         </div>
       </section>

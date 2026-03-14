@@ -166,7 +166,7 @@ const BlogDetailed = ({data}: BlogProps) => {
           </Badge>
         </span>
         <span className="font-bold">
-          Tags/Technologies:{" "}
+          Tags:{" "}
           {data.blog.tags?.map((tag: string) => (
             <Badge
               key={tag}

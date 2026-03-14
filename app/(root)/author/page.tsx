@@ -10,7 +10,7 @@ const AuthorsPage = async () => {
 
   return (
     <section className="mb-5 mt-10">
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {author?.length > 0 ? (
           author.map((auth: any) => (
             <AuthorCard
@@ -26,7 +26,7 @@ const AuthorsPage = async () => {
             />
           ))
         ) : (
-          <p>No author found</p>
+          <p className="font-bold text-sm">No author found</p>
         )}
       </div>
     </section>

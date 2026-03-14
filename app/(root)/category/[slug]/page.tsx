@@ -16,7 +16,7 @@ const CategoryPage = async ({params}: {params: {slug: string}}) => {
   return (
     <section className="mb-5 mt-10">
       <SearchHeader query={""} author={""} category={params.slug || ""} />
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {blogs?.length > 0 ? (
           blogs.map((blog: any) => (
             <BlogCard
@@ -31,7 +31,7 @@ const CategoryPage = async ({params}: {params: {slug: string}}) => {
             />
           ))
         ) : (
-          <p>No blog found</p>
+          <p className="font-bold text-sm">No blog found</p>
         )}
       </div>
     </section>

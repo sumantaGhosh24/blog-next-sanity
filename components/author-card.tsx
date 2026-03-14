@@ -36,6 +36,11 @@ const AuthorCard = ({
 }: AuthorCardProps) => {
   const {primaryColor} = usePrimaryColor();
 
+  const TAG_MAX_COUNT = 2;
+
+  const filteredTags =
+    tags.length <= TAG_MAX_COUNT ? tags : tags.splice(0, TAG_MAX_COUNT);
+
   return (
     <Card>
       <Link href={`/author/${slug.current}`}>
@@ -51,21 +56,40 @@ const AuthorCard = ({
           </div>
           <CardTitle className="capitalize">{name}</CardTitle>
         </CardHeader>
-        <CardContent>
-          <CardDescription>Username: {username}</CardDescription>
-          <CardDescription>Email: {email}</CardDescription>
-          <CardDescription>Address: {address}</CardDescription>
-          <CardDescription>Website: {website}</CardDescription>
+        <CardContent className="space-y-2 p-3">
           <CardDescription>
-            Tags:{" "}
-            {tags?.map((tag: string) => (
+            <span className="font-bold">Username: </span>
+            {username}
+          </CardDescription>
+          <CardDescription>
+            <span className="font-bold">Email: </span>
+            {email}
+          </CardDescription>
+          <CardDescription>
+            <span className="font-bold">Address: </span>
+            {address}
+          </CardDescription>
+          <CardDescription>
+            <span className="font-bold">Website: </span>
+            {website}
+          </CardDescription>
+          <CardDescription>
+            <span className="font-bold">Tags: </span>
+            {filteredTags.map((tag: string) => (
               <Badge
                 key={tag}
-                className={`mr-1.5 text-xs font-normal md:text-sm bg-${primaryColor}-700 hover:bg-${primaryColor}-800`}
+                className={`my-1 mr-1.5 text-xs md:text-sm bg-${primaryColor}-700 hover:bg-${primaryColor}-800`}
               >
                 {tag}
               </Badge>
             ))}
+            {tags.length > 0 && (
+              <Badge
+                className={`my-1 mr-1.5 text-xs md:text-sm bg-${primaryColor}-700 hover:bg-${primaryColor}-800`}
+              >
+                {tags.length} +
+              </Badge>
+            )}
           </CardDescription>
         </CardContent>
       </Link>
