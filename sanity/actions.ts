@@ -162,6 +162,7 @@ export const getBlog = async (id: string) => {
     );
 
     const relatableBlog = await client.fetch(
+      // @ts-ignore
       groq`${buildQuery({
         type: "post",
         category: blog.category.slug.current,
